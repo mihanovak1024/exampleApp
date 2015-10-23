@@ -1,6 +1,29 @@
 <resources>
-    <string name="app_name">exampleapp</string>
+    <string name="app_name">Example App</string>
 
-    <string name="button_one_text">Show some random text</string>
-    <string name="button_two_text">Get some news from internet</string>
+    <!-- HOST MODULE ENDPOINT -->
+    <string name="host_endpoint" formatted="false">http://bonar.si/api</string>
+
+    <!-- INTRO BUTTON NAME STRINGS -->
+    <string name="button_text">Get restaurants from internet</string>
+
+    <!-- RESTAURANT STRINGS -->
+    <string name="restaurants">Restaurants</string>
+    <string name="refresh">Reload</string>
+
+    <string name="restaurant_week" formatted="false">Week:\n</string>
+    <string name="restaurant_opened" formatted="false">Opened from %s to %s\n</string>
+    <string name="restaurant_saturday" formatted="false">Saturday:\n</string>
+    <string name="restaurant_sunday" formatted="false">Sunday:\n</string>
+    <string name="restaurant_address" formatted="false">Address: \n</string>
+    <string name="restaurant_telephone" formatted="false">Telephone: \n</string>
+    <string name="restaurant_menu">Menu:</string>
+    <string name="restaurant_price">Price:</string>
+    <string name="restaurant_closed">Closed</string>
+
+    <!-- INTERACTOR ERROR MESSAGE STRINGS -->
+    <string name="no_connection_message">You have no internet connection.</string>
+    <string name="on_failure_message">Failed loading events.</string>
+
+
 </resources>

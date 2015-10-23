@@ -13,7 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:background">#00424242</item>
+        <item name="android:background">@color/color_blue</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
@@ -25,6 +25,55 @@
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@android:color/white</item>
+    </style>
+
+    <!-- INTRO BUTTONS -->
+    <style name="AppTheme.IntroButtons">
+        <item name="android:textColor">@color/color_grey</item>
+        <item name="android:background">@color/color_blue</item>
+        <item name="android:padding">@dimen/intro_button_padding</item>
+        <item name="android:textSize">@dimen/intro_button_text_size</item>
+    </style>
+
+    <!-- RESTAURANT ITEM COMPONENTS-->
+
+    <style name="AppTheme.Restaurant">
+        <item name="android:background">@color/color_blue</item>
+        <item name="android:textColor">@color/color_grey</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+        <item name="android:textSize">@dimen/intro_button_text_size</item>
+    </style>
+
+    <style name="AppTheme.Restaurant.Heading">
+        <item name="android:textSize">@dimen/restaurant_text_view_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/color_green</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+    </style>
+
+    <style name="AppTheme.Restaurant.OpenClose">
+        <item name="android:background">@drawable/restaurant_text_view_background</item>
+        <item name="android:textColor">@color/color_blue</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <!-- RESTAURANT COMPONENTS -->
+    <style name="AppTheme.Restaurant.TextView">
+        <item name="android:background">@drawable/restaurant_text_view_background</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AppTheme.Restaurant.TextView.Item">
+        <item name="android:background">@color/color_blue</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/restaurant_text_view_item_text_size</item>
+    </style>
+
+    <!-- RESTAURANT MENU VIEW ITEM -->
+    <style name="AppTheme.Restaurant.MenuItem">
+        <item name="android:textSize">@dimen/restaurant_text_view_item_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

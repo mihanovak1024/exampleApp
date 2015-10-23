@@ -2,66 +2,90 @@ package oreschnix.exampleapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.facebook.FacebookSdk;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import oreschnix.partyapp.R;
-import oreschnix.partyapp.dagger.components.DaggerIntroComponent;
-import oreschnix.partyapp.dagger.modules.IntroModule;
-import oreschnix.partyapp.mvp.views.IntroView;
-import oreschnix.partyapp.utilities.PreferenceUtils;
+import oreschnix.exampleapp.R;
+import oreschnix.exampleapp.dagger.components.DaggerIntroComponent;
+import oreschnix.exampleapp.dagger.modules.IntroModule;
+import oreschnix.exampleapp.mvp.views.IntroView;
 
 /**
  * Created by Miha on 2.9.2015.
  */
 public class IntroActivity extends BaseActivity implements IntroView {
 
-    @InjectView(R.id.button_one)
-    TextView buttonOne;
-    @InjectView(R.id.button_two)
-    TextView buttonTwo;
-
+    @InjectView(R.id.iv_background)
+    ImageView background;
+    @InjectView(R.id.ll_layout)
+    LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         ButterKnife.inject(this);
-        FacebookSdk.sdkInitialize(this);
+        initUI();
     }
 
     @Override
     public void initUI() {
+        AlphaAnimation backgroundAnimation = new AlphaAnimation(0, 1);
+        backgroundAnimation.setDuration(1000);
+        final Animation introButtonAnimation = AnimationUtils.loadAnimation(this, R.anim.intro_button_appear);
+        backgroundAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
 
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                introButtonAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                layout.startAnimation(introButtonAnimation);
+                layout.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        background.startAnimation(backgroundAnimation);
+        background.setVisibility(View.VISIBLE);
     }
 
-    @OnClick(R.id.fl_intro_events)
-    void clickEvents() {
-        Intent intent;
-        String accToken = PreferenceUtils.getAccessToken();
-        long accTokenExp = PreferenceUtils.getAccessTokenExpires();
-        if (accToken!=null && !accToken.isEmpty()
-                && accTokenExp>0) {
-            intent = new Intent(IntroActivity.this, EventsActivity.class);
-        } else{
-            intent = new Intent(IntroActivity.this, LoginActivity.class);
-        }
+    @OnClick(R.id.button)
+    void onButtonTwoClick() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.fl_restaurants)
-    void clickRestaurants() {
-        Intent intent = new Intent(IntroActivity.this, RestaurantsActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void initDependencies() {
         DaggerIntroComponent.builder().introModule(new IntroModule(this)).build().init(this);
     }
+
+
 }

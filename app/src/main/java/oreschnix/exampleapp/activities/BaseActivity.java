@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.InjectView;
 import butterknife.Optional;
+import oreschnix.exampleapp.R;
 import oreschnix.exampleapp.mvp.views.BaseView;
-import oreschnix.partyapp.R;
-import oreschnix.partyapp.mvp.views.BaseView;
 
 /**
  * Created by Miha on 2.9.2015.
@@ -52,6 +52,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_back_gray);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                finishActivityAnimation();
+            }
+        });
     }
 
     @Override

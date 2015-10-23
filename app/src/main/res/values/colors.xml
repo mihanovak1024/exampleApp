@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color_blue">#2C9CD2</color>
     <color name="color_grey">#e7e7e7</color>
+    <color name="grey_divider">#b4b4b4</color>
+    <color name="dark_grey">#333333</color>
+    <color name="color_green">#66BB6A</color>
 </resources>
